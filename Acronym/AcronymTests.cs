@@ -69,5 +69,45 @@
         {
             Assert.That(Acronym.Abbreviate("The Road _Not_ Taken"), Is.EqualTo("TRNT"));
         }
+
+        [TestCase]
+        public void Underscore_Double_emphasis()
+        {
+            Assert.That(Acronym.Abbreviate("The Road __Not_ Taken"), Is.EqualTo("TRNT"));
+        }
+
+        [TestCase]
+        public void Numbers_In_Name()
+        {
+            /// AAA
+            var arrange = "This 1 Acronym Has 2 Numbers";
+
+            var actual = Acronym.Abbreviate(arrange);
+
+            var expected = "T1AH2N";
+
+            Assert.That(expected, Is.EqualTo(actual));
+        }
+
+        [TestCase]
+        public void SpecialCharacter_In_Name()
+        {
+            /// AAA
+            var arrange = "This Acronym A !";
+
+            var actual = Acronym.Abbreviate(arrange);
+
+            var expected = "TAA!";
+
+            Assert.That(expected, Is.EqualTo(actual));
+        }
+
+        [TestCase("Indexed Simple Access Mapping", "ISAM")]
+        [TestCase("AOL Instant Messenger", "AIM")]
+        [TestCase("Rocky Mountain College", "RMC")]
+        public void TestFunction(string input, string expected)
+        {
+            Assert.That(Acronym.Abbreviate(input), Is.EqualTo(expected));
+        }
     }
 }
