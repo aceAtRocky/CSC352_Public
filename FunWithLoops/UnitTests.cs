@@ -5,13 +5,35 @@
 namespace FunWithLoops
 {
     using NUnit.Framework;
-
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     [TestFixture]
     [Parallelizable(ParallelScope.All)]
     public class UnitTests
     {
+
+        [Test]
+        public void ShowLazyIEnumerable()
+        {
+            foreach(int number in Program.NumbersOneThruTwentyFive())
+            {
+                Console.WriteLine(number);
+            }
+        }
+
+        [Test]
+        public void ShowFirst100EvenNumbers()
+        {
+            var average = Program.AllEvenNumbers()
+             .Take(5)
+             .ToArray()
+             .Sum();
+
+            Console.WriteLine(average);
+        }
+
         [Test]
         public void NumbersOneThruTwentyFive_Test()
         {
@@ -81,7 +103,10 @@ namespace FunWithLoops
         [TestCase(2, true)]
         [TestCase(3, true)]
         [TestCase(4, false)]
+        [TestCase(41, true)]
         [TestCase(42, false)]
+        [TestCase(43, true)]
+        [TestCase(45, false)]
         [TestCase(47, true)]
         [TestCase(97, true)]
         public void IsPrime(int number, bool expected)
