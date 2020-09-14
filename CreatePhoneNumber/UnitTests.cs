@@ -6,21 +6,15 @@ namespace CreatePhoneNumber
     [TestFixture]
     public class UnitTests
     {
-        [Test]
-        public void SomeTest()
+        [TestCase(new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, "(000) 000-0000")]
+        [TestCase(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, "(012) 345-6789")]
+        public void ValidInputs(int[] numbers, string expected)
         {
-            Assert.IsTrue(true);
-        }
+            // Act
+            string actual = Logic.TranslateToPhoneNumber(numbers);
 
-        [Test]
-        public void SomeOtherTest()
-        {
-            Assert.IsTrue(false);
+            // Assert
+            Assert.That(actual, Is.EqualTo(expected));
         }
-    }
-
-    public static class UnitTestHelpers
-    {
-        // Helper Libraries for this class
     }
 }
