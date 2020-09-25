@@ -61,15 +61,15 @@ namespace FunWithClasses
             bool isEqual = false;
             Person other = obj as Person;
 
-            if(other == null)
+            if (other == null)
             {
                 isEqual = false;
             }
             else
             {
-                if(this.GetHashCode() == other.GetHashCode())
+                if (this.GetHashCode() == other.GetHashCode())
                 {
-                    if(this.FirstName.Equals(other.FirstName) &&
+                    if (this.FirstName.Equals(other.FirstName) &&
                         this.LastName.Equals(other.LastName) &&
                         this.BirthDate.Equals(other.BirthDate))
                     {
