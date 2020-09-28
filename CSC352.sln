@@ -30,7 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Summation", "Summation\Summ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NarcissisticNumber", "NarcissisticNumber\NarcissisticNumber.csproj", "{F9E51778-2DF3-4770-AD11-5F6D705A6ABA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithClasses", "FunWithClasses\FunWithClasses.csproj", "{C3A3D4DA-7C82-4889-9D43-8A2C60230C65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunWithClasses", "FunWithClasses\FunWithClasses.csproj", "{C3A3D4DA-7C82-4889-9D43-8A2C60230C65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareEveryNumber", "SquareEveryNumber\SquareEveryNumber.csproj", "{5D7AB9C9-5D26-4F6C-AF58-925BA6B3998B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,6 +88,10 @@ Global
 		{C3A3D4DA-7C82-4889-9D43-8A2C60230C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3A3D4DA-7C82-4889-9D43-8A2C60230C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3A3D4DA-7C82-4889-9D43-8A2C60230C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D7AB9C9-5D26-4F6C-AF58-925BA6B3998B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D7AB9C9-5D26-4F6C-AF58-925BA6B3998B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D7AB9C9-5D26-4F6C-AF58-925BA6B3998B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D7AB9C9-5D26-4F6C-AF58-925BA6B3998B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

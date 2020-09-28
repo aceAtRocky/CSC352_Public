@@ -191,5 +191,21 @@ namespace WordCount
             };
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [TestCase("apple.", "apple")]
+        [TestCase("apple,", "apple")]
+        [TestCase("apple:", "apple")]
+        [TestCase("apple!", "apple")]
+        public void TestSanitizeMethod(string input, string expected)
+        {
+            // Arrange
+            // This was done as part of the arguments coming in
+
+            // Act
+            string actual = WordCount.SanitizePhrase(input);
+
+            // Assert
+            Assert.That(actual, Is.EqualTo(expected));
+        }
     }
 }
