@@ -11,14 +11,14 @@ namespace Calculator.Logic.UnitTests
     [TestFixture]
     public class ParserTests
     {
-        [TestCase("1+1", 2)]
-        public void Parse_ValidInput(string input, int expected)
+        [TestCase("1 + 1", "1 1 +")]
+        public void ConvertToRPN_ValidInput(string input, int expected)
         {
             // Arrange
             // Taken care of in the arguments
 
             // Act
-            int actual = Parser.Parse(input);
+            string actual = Parser.ConvertToRPN(input);
 
             // Assert
             Assert.That(actual, Is.EqualTo(expected));
