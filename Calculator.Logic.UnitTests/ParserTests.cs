@@ -23,5 +23,25 @@ namespace Calculator.Logic.UnitTests
             // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [TestCase("+", "+", true)]
+        [TestCase("-", "-", true)]
+        [TestCase("*", "*", true)]
+        [TestCase("/", "/", true)]
+        [TestCase("^", "^", true)]
+        [TestCase("+", "-", true)]
+        [TestCase("-", "+", true)]
+        [TestCase("+", "*", false)]
+        [TestCase("+", "/", false)]
+        [TestCase("+", "^", false)]
+        [TestCase("-", "*", false)]
+        [TestCase("-", "/", false)]
+        [TestCase("-", "^", false)]
+        public void OperatorHasEqualPrecidence_ValidInput(string op1, string op2, bool expected)
+        {
+            bool actual = Parser.OperatorHasEqualPrecidence(op1, op2);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
     }
 }
