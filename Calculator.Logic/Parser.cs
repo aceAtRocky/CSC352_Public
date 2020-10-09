@@ -26,6 +26,7 @@ namespace Calculator.Logic
                     while
                         (
                             operatorStack.Any() &&
+                            operatorStack.Peek() != "(" &&
                             (
                                 OperatorHasGreaterPrecidence(operatorStack.Peek(), token)
                                 ||
@@ -33,7 +34,7 @@ namespace Calculator.Logic
                             )
                         )
                     {
-
+                        output.Enqueue(operatorStack.Pop());
                     }
 
                     operatorStack.Push(token);
@@ -83,9 +84,37 @@ namespace Calculator.Logic
 
         }
 
-        private static bool OperatorHasGreaterPrecidence(string v, string token)
+        private static bool OperatorHasGreaterPrecidence(string op1, string op2)
         {
-            throw new NotImplementedException();
+            int op1Precidence = GetOperatorPrecidence(op1);
+            int op2Precidence = GetOperatorPrecidence(op2);
+
+            return op1Precidence > op2Precidence;
+        }
+
+        private static int GetOperatorPrecidence(string op)
+        {
+            switch (op)
+            {
+                case "^":
+                    {
+                        return 3;
+                    }
+                case "*":
+                case "/":
+                    {
+                        return 2;
+                    }
+                case "+":
+                case "-":
+                    {
+                        return 1;
+                    }
+                default:
+                    {
+                        throw new InvalidOperationException("Unknown operator");
+                    }
+            }
         }
 
         public static bool OperatorHasEqualPrecidence(string v, string token)
@@ -116,7 +145,14 @@ namespace Calculator.Logic
 
         private static bool TokenIsLeftAssociative(string token)
         {
-            return true;
+            if (token == "^")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private static bool isOperator(string token)

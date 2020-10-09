@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Calculator.Logic.UnitTests
 {
@@ -12,7 +6,12 @@ namespace Calculator.Logic.UnitTests
     public class ParserTests
     {
         [TestCase("1 + 1", "1 1 +")]
-        public void ConvertToRPN_ValidInput(string input, int expected)
+        [TestCase("1 + 2 * 3 ^ 4", "1 2 3 4 ^ * +")]
+        [TestCase("( 2 + 2 ) ^ 2", "2 2 + 2 ^")]
+        [TestCase("3 + 2 - 1", "3 2 + 1 -")]
+        [TestCase("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3", "3 4 2 * 1 5 - 2 3 ^ ^ / +")]
+        [TestCase("1 + 2 + 3", "1 2 + 3 +")]
+        public void ConvertToRPN_ValidInput(string input, string expected)
         {
             // Arrange
             // Taken care of in the arguments
