@@ -21,6 +21,10 @@ namespace Calculator.Logic
                 {
                     output.Enqueue(token);
                 }
+                else if (isFunction(token))
+                {
+                    operatorStack.Push(token);
+                }
                 else if (isOperator(token))
                 {
                     while
@@ -82,6 +86,21 @@ namespace Calculator.Logic
 
             return sb.ToString().TrimEnd();
 
+        }
+
+        private static bool isFunction(string token)
+        {
+            switch(token)
+            {
+                case "sqrt":
+                    {
+                        return true;
+                    }
+                default:
+                    {
+                        return false;
+                    }
+            }
         }
 
         private static bool OperatorHasGreaterPrecidence(string op1, string op2)

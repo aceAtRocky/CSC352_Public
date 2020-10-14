@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Calculator.Logic;
+
 namespace Calculator.Windows
 {
     public partial class Form1 : Form
@@ -19,52 +21,52 @@ namespace Calculator.Windows
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "1";
+            this.tbInput.Text += "1";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "2";
+            this.tbInput.Text += "2";
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "3";
+            this.tbInput.Text += "3";
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "4";
+            this.tbInput.Text += "4";
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "5";
+            this.tbInput.Text += "5";
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "6";
+            this.tbInput.Text += "6";
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "7";
+            this.tbInput.Text += "7";
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "8";
+            this.tbInput.Text += "8";
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "9";
+            this.tbInput.Text += "9";
         }
 
         private void button0_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "0";
+            this.tbInput.Text += "0";
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -126,7 +128,7 @@ namespace Calculator.Windows
                         if (e.Shift)
                         {
                             // Multiply
-                            ;
+                            btnMul_Click(sender, e);
                         }
                         else
                         {
@@ -166,7 +168,34 @@ namespace Calculator.Windows
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.textBox1.Text += "+";
+            this.tbInput.Text += " + ";
+        }
+
+        private void btnSub_Click(object sender, EventArgs e)
+        {
+            this.tbInput.Text += " - ";
+        }
+
+        private void btnMul_Click(object sender, EventArgs e)
+        {
+            this.tbInput.Text += " * ";
+        }
+
+        private void btnEq_Click(object sender, EventArgs e)
+        {
+            // Convert to RPN
+            string rpn = Parser.ConvertToRPN(this.tbInput.Text);
+            this.tbHistory.Text += rpn + Environment.NewLine;
+
+            // Evaluate RPN
+            double result = Evaluate.EvaluateRPN(rpn);
+
+            this.tbInput.Text = result.ToString();
+        }
+
+        private void btnExpo_Click(object sender, EventArgs e)
+        {
+            this.tbInput.Text += " ^ ";
         }
     }
 

@@ -11,6 +11,10 @@ namespace Calculator.Logic.UnitTests
         [TestCase("3 + 2 - 1", "3 2 + 1 -")]
         [TestCase("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3", "3 4 2 * 1 5 - 2 3 ^ ^ / +")]
         [TestCase("1 + 2 + 3", "1 2 + 3 +")]
+        [TestCase("1 + sqrt ( 4 )", "1 4 sqrt +")]
+        [TestCase("1 + sqrt ( 2 ^ 2 )", "1 2 2 ^ sqrt +")]
+        [TestCase("1 + sqrt ( sqrt ( 2 ^ 2 ) )", "1 2 2 ^ sqrt sqrt +")]
+        [TestCase("1 + sqrt ( sqrt ( ( 2 ^ 2 + 2 ) ) )", "1 2 2 ^ 2 + sqrt sqrt +")]
         public void ConvertToRPN_ValidInput(string input, string expected)
         {
             // Arrange
