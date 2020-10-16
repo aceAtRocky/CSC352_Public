@@ -46,5 +46,14 @@ namespace Calculator.Logic.UnitTests
 
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [TestCase("1 1 +", "1 + 1")]
+        [TestCase("3 1 + 2 *", "( 3 + 1 ) * 2")]
+        public void ConvertToInfix_ValidInput(string rpn, string expected)
+        {
+            string actual = Parser.ConvertToInfix(rpn);
+
+            Assert.That(actual, Is.EqualTo(expected));
+        }
     }
 }

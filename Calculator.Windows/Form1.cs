@@ -148,6 +148,11 @@ namespace Calculator.Windows
                         button9_Click(sender, e);
                         break;
                     }
+                case Keys.Add:
+                    {
+                        btnAdd_Click(sender, e);
+                        break;
+                    }
                 case Keys.Oemplus:
                     {
                         if (e.Shift)
@@ -155,7 +160,33 @@ namespace Calculator.Windows
                             // Addition
                             btnAdd_Click(sender, e);
                         }
+                        else
+                        {
+                            // Equals
+                            btnEq_Click(sender, e);
+                        }
 
+                        break;
+                    }
+                case Keys.Subtract:
+                case Keys.OemMinus:
+                    {
+                        btnSub_Click(sender, e);
+                        break;
+                    }
+                case Keys.Enter:
+                    {
+                        btnEq_Click(sender, e);
+                        break;
+                    }
+                case Keys.Divide:
+                    {
+                        btnDiv_Click(sender, e);
+                        break;
+                    }
+                case Keys.Multiply:
+                    {
+                        btnMul_Click(sender, e);
                         break;
                     }
                 default:
@@ -196,6 +227,24 @@ namespace Calculator.Windows
         private void btnExpo_Click(object sender, EventArgs e)
         {
             this.tbInput.Text += " ^ ";
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            bool wasHandled = false;
+
+            if (keyData == Keys.Enter)
+            {
+                // Consume the Enter Key so it does not simulate a click
+                wasHandled = true;
+            }
+
+            return wasHandled;
+        }
+
+        private void btnDiv_Click(object sender, EventArgs e)
+        {
+            this.tbInput.Text += " / ";
         }
     }
 

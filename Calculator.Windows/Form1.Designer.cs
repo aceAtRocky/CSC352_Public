@@ -45,6 +45,7 @@
             this.btnMul = new System.Windows.Forms.Button();
             this.btnExpo = new System.Windows.Forms.Button();
             this.tbHistory = new System.Windows.Forms.TextBox();
+            this.btnDiv = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -71,6 +72,7 @@
             // 
             this.tbInput.Location = new System.Drawing.Point(94, 104);
             this.tbInput.Name = "tbInput";
+            this.tbInput.ReadOnly = true;
             this.tbInput.Size = new System.Drawing.Size(237, 20);
             this.tbInput.TabIndex = 2;
             // 
@@ -209,14 +211,27 @@
             this.tbHistory.Location = new System.Drawing.Point(94, 24);
             this.tbHistory.Multiline = true;
             this.tbHistory.Name = "tbHistory";
+            this.tbHistory.ReadOnly = true;
             this.tbHistory.Size = new System.Drawing.Size(237, 74);
             this.tbHistory.TabIndex = 16;
             // 
+            // btnDiv
+            // 
+            this.btnDiv.Location = new System.Drawing.Point(338, 161);
+            this.btnDiv.Name = "btnDiv";
+            this.btnDiv.Size = new System.Drawing.Size(75, 23);
+            this.btnDiv.TabIndex = 17;
+            this.btnDiv.Text = "/";
+            this.btnDiv.UseVisualStyleBackColor = true;
+            this.btnDiv.Click += new System.EventHandler(this.btnDiv_Click);
+            // 
             // Form1
             // 
+            this.AcceptButton = this.btnEq;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 450);
+            this.Controls.Add(this.btnDiv);
             this.Controls.Add(this.tbHistory);
             this.Controls.Add(this.btnExpo);
             this.Controls.Add(this.btnMul);
@@ -262,6 +277,7 @@
         private System.Windows.Forms.Button btnMul;
         private System.Windows.Forms.Button btnExpo;
         private System.Windows.Forms.TextBox tbHistory;
+        private System.Windows.Forms.Button btnDiv;
     }
 }
 

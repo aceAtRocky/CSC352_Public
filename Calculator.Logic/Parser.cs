@@ -88,9 +88,48 @@ namespace Calculator.Logic
 
         }
 
+        public static string ConvertToInfix(string rpn)
+        {
+            string[] splitRPN = rpn.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+            Stack<string> outputStack = new Stack<string>();
+
+            for (int i = 0; i < splitRPN.Length; i++)
+            {
+                if (Parser.isOperator(splitRPN[i]))
+                {
+                    string right = outputStack.Pop();
+                    string left = outputStack.Pop();
+                    string result = $"{left} {splitRPN[i]} {right}";
+
+                    // Now do the look ahead
+                    for (int j = i + 1; j < splitRPN.Length; j++)
+                    {
+                        if (Parser.isOperator(splitRPN[j]))
+                        {
+                            if (Parser.OperatorHasGreaterPrecidence(splitRPN[j], splitRPN[i]))
+                            {
+                                result = $"( {result} )";
+                            }
+
+                            break;
+                        }
+                    }
+
+                    outputStack.Push(result);
+                }
+                else
+                {
+                    outputStack.Push(splitRPN[i]);
+                }
+            }
+
+            return outputStack.Pop();
+        }
+
         private static bool isFunction(string token)
         {
-            switch(token)
+            switch (token)
             {
                 case "sqrt":
                     {
