@@ -49,6 +49,7 @@ namespace Calculator.Logic.UnitTests
 
         [TestCase("1 1 +", "1 + 1")]
         [TestCase("3 1 + 2 *", "( 3 + 1 ) * 2")]
+        [TestCase("3 4 2 * 1 5 - 2 3 ^ ^ / +", "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3")]
         public void ConvertToInfix_ValidInput(string rpn, string expected)
         {
             string actual = Parser.ConvertToInfix(rpn);

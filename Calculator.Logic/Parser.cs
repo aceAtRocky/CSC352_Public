@@ -127,7 +127,7 @@ namespace Calculator.Logic
             return outputStack.Pop();
         }
 
-        private static bool isFunction(string token)
+        internal static bool isFunction(string token)
         {
             switch (token)
             {
@@ -213,7 +213,7 @@ namespace Calculator.Logic
             }
         }
 
-        private static bool isOperator(string token)
+        internal static bool isOperator(string token)
         {
             switch (token)
             {
