@@ -125,11 +125,11 @@
             return sb.ToString();
         }
 
-        private static string GeneateCurrentRPN(Stack<double> evaluatorStack, IEnumerable<string> enumerable)
+        public static string GeneateCurrentRPN(Stack<double> evaluatorStack, IEnumerable<string> enumerable)
         {
             StringBuilder currentRPN = new StringBuilder();
 
-            foreach (var current in evaluatorStack)
+            foreach (var current in evaluatorStack.Reverse())
             {
                 currentRPN.Append($"{current} ");
             }
