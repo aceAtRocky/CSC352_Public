@@ -25,7 +25,7 @@
             Assert.That(actual, Is.EqualTo(expected));
         }
 
-        [TestCase("3 3 3 + ^", "")]
+        [TestCase("3 3 3 + ^", "3 ^ ( 3 + 3 )\r\nAdd 3 to 3 to get 6\r\n3 ^ 6\r\nRaise 3 to the 6 Power to get 729\r\n729\r\n729")]
         public void EvaluateRPN_StepByStepInfix_ValidInput(string input, string expected)
         {
             string actual = Evaluate.EvaluateRPN_StepByStepInfix(input);
