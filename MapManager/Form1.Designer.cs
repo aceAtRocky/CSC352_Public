@@ -50,6 +50,7 @@
             this.mapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.mapPictureBox.TabIndex = 0;
             this.mapPictureBox.TabStop = false;
+            this.mapPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapPictureBox_MouseMove);
             // 
             // comboBox1
             // 
@@ -70,6 +71,7 @@
             this.assetPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.assetPictureBox.TabIndex = 2;
             this.assetPictureBox.TabStop = false;
+            this.assetPictureBox.Click += new System.EventHandler(this.assetPictureBox_Click);
             // 
             // primaryHoriztonalLayout
             // 
@@ -112,6 +114,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1028, 687);
             this.Controls.Add(this.primaryVerticalLayout);
+            this.DoubleBuffered = true;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Form1";
