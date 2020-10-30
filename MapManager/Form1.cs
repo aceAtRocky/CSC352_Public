@@ -19,10 +19,32 @@ namespace MapManager
         Bitmap combinedImage = null;
         Point overlayLocation = new Point();
 
+        List<Layer> layers = new List<Layer>();
+
+        decimal scalex;
+        decimal scaley;
+
+
         public Form1()
         {
             InitializeComponent();
-            renderedMap = new Bitmap(mapPictureBox.Image);
+            layers.Add(new Layer() { FileName = "", Current = new Bitmap(mapPictureBox.Image), Location = new Point(0, 0) });
+
+            renderedMap = RenderLayers(layers);
+
+            mapPictureBox_Resize(this, new EventArgs());
+        }
+
+        private Bitmap RenderLayers(IEnumerable<Layer> layers)
+        {
+            return layers.First().Current;
+
+            //Bitmap render = new Bitmap();
+
+            //foreach(var layer in layers)
+            //{
+
+            //}
         }
 
         private void assetPictureBox_Click(object sender, EventArgs e)
@@ -65,12 +87,18 @@ namespace MapManager
             }
 
             overlayLocation = new Point(
-                e.X - overlayImage.Width / 2,
-                e.Y - overlayImage.Height / 2);
+                (int)(e.X * scalex) - overlayImage.Width / 2,
+                (int)(e.Y * scaley) - overlayImage.Height / 2);
             ShowCombinedImage();
 
             var mousePosition = new Point(e.X, e.Y);
             Debug.WriteLine(mousePosition.ToString());
+        }
+
+        private void mapPictureBox_Resize(object sender, EventArgs e)
+        {
+            scalex = Decimal.Divide(renderedMap.Width, mapPictureBox.Width);
+            scaley = Decimal.Divide(renderedMap.Height, mapPictureBox.Height);
         }
     }
 }
