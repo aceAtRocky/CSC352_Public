@@ -34,10 +34,14 @@
             this.assetPictureBox = new System.Windows.Forms.PictureBox();
             this.primaryHoriztonalLayout = new System.Windows.Forms.TableLayoutPanel();
             this.primaryVerticalLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.mousePosActual = new System.Windows.Forms.Label();
+            this.mousePosScaled = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).BeginInit();
             this.primaryHoriztonalLayout.SuspendLayout();
             this.primaryVerticalLayout.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapPictureBox
@@ -50,6 +54,7 @@
             this.mapPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.mapPictureBox.TabIndex = 0;
             this.mapPictureBox.TabStop = false;
+            this.mapPictureBox.Click += new System.EventHandler(this.mapPictureBox_Click);
             this.mapPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapPictureBox_MouseMove);
             this.mapPictureBox.Resize += new System.EventHandler(this.mapPictureBox_Resize);
             // 
@@ -82,12 +87,14 @@
             this.primaryHoriztonalLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.primaryHoriztonalLayout.Controls.Add(this.comboBox1, 0, 1);
             this.primaryHoriztonalLayout.Controls.Add(this.assetPictureBox, 0, 0);
+            this.primaryHoriztonalLayout.Controls.Add(this.panel1, 0, 2);
             this.primaryHoriztonalLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.primaryHoriztonalLayout.Location = new System.Drawing.Point(3, 3);
             this.primaryHoriztonalLayout.Name = "primaryHoriztonalLayout";
-            this.primaryHoriztonalLayout.RowCount = 2;
+            this.primaryHoriztonalLayout.RowCount = 3;
             this.primaryHoriztonalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.primaryHoriztonalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.primaryHoriztonalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.primaryHoriztonalLayout.Size = new System.Drawing.Size(226, 681);
             this.primaryHoriztonalLayout.TabIndex = 4;
             // 
@@ -108,6 +115,34 @@
             this.primaryVerticalLayout.Size = new System.Drawing.Size(1028, 687);
             this.primaryVerticalLayout.TabIndex = 5;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.mousePosScaled);
+            this.panel1.Controls.Add(this.mousePosActual);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 535);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(220, 143);
+            this.panel1.TabIndex = 3;
+            // 
+            // mousePosActual
+            // 
+            this.mousePosActual.AutoSize = true;
+            this.mousePosActual.Location = new System.Drawing.Point(3, 10);
+            this.mousePosActual.Name = "mousePosActual";
+            this.mousePosActual.Size = new System.Drawing.Size(118, 13);
+            this.mousePosActual.TabIndex = 0;
+            this.mousePosActual.Text = "mousePosActual - X: Y:";
+            // 
+            // mousePosScaled
+            // 
+            this.mousePosScaled.AutoSize = true;
+            this.mousePosScaled.Location = new System.Drawing.Point(3, 33);
+            this.mousePosScaled.Name = "mousePosScaled";
+            this.mousePosScaled.Size = new System.Drawing.Size(121, 13);
+            this.mousePosScaled.TabIndex = 1;
+            this.mousePosScaled.Text = "mousePosScaled - X: Y:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,6 +159,8 @@
             this.primaryHoriztonalLayout.ResumeLayout(false);
             this.primaryVerticalLayout.ResumeLayout(false);
             this.primaryVerticalLayout.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,6 +173,9 @@
         private System.Windows.Forms.PictureBox assetPictureBox;
         private System.Windows.Forms.TableLayoutPanel primaryHoriztonalLayout;
         private System.Windows.Forms.TableLayoutPanel primaryVerticalLayout;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label mousePosScaled;
+        private System.Windows.Forms.Label mousePosActual;
     }
 }
 
