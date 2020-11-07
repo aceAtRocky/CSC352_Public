@@ -18,8 +18,9 @@ namespace MapManager
         Bitmap overlayImage = null;
         Bitmap combinedImage = null;
         Point overlayLocation = new Point();
+        bool IsEditingImage = false;
 
-        List<Layer> layers = new List<Layer>();
+        BindingList<Layer> layers = new BindingList<Layer>();
 
         decimal scalex;
         decimal scaley;
@@ -34,6 +35,28 @@ namespace MapManager
             mapPictureBox.Image = renderedMap;
 
             mapPictureBox_Resize(this, new EventArgs());
+
+            // Bind the ComboBox to our Layers Structure
+            BindingSource layersBindingSource = new BindingSource();
+            layersBindingSource.DataSource = layers;
+            layerSelectionComboBox.DataSource = layersBindingSource.DataSource;
+            layerSelectionComboBox.DisplayMember = "Name";
+            layerSelectionComboBox.ValueMember = "Current";
+
+            // Bind the Mouse Wheel Events
+            MouseWheel += Form1_MouseWheel;
+        }
+
+        private void Form1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (IsEditingImage)
+            {
+                debugStatus.Text = $"Is in Edit Mode: {e.Delta}";
+            }
+            else
+            {
+                debugStatus.Text = $"Is not in edit mode: {e.Delta}";
+            }
         }
 
         private Bitmap RenderLayers()
@@ -45,6 +68,7 @@ namespace MapManager
         {
             overlayImage = new Bitmap(assetPictureBox.Image);
             mapPictureBox.Cursor = Cursors.Cross;
+            IsEditingImage = true;
         }
 
         private void ShowCombinedImage()
@@ -110,6 +134,24 @@ namespace MapManager
 
             renderedMap = RenderLayers();
             mapPictureBox.Image = renderedMap;
+
+            IsEditingImage = false;
+        }
+
+        private void layerSelectionComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (layerSelectionComboBox.SelectedValue is Bitmap)
+            {
+                layerPreviewPictureBox.Image = layerSelectionComboBox.SelectedValue as Bitmap;
+            }
+            else if (layerSelectionComboBox.SelectedValue is Layer)
+            {
+                layerPreviewPictureBox.Image = (layerSelectionComboBox.SelectedValue as Layer).Current;
+            }
+            else
+            {
+                // Do Nothing
+            }
         }
     }
 }
