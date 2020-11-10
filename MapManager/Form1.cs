@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace MapManager
+﻿namespace MapManager
 {
+    using System;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Windows.Forms;
+
     public partial class Form1 : Form
     {
 
@@ -19,6 +13,9 @@ namespace MapManager
         Bitmap combinedImage = null;
         Point overlayLocation = new Point();
         bool IsEditingImage = false;
+
+        int overlayScale = 0;
+        Bitmap originalOverlayImage = null;
 
         BindingList<Layer> layers = new BindingList<Layer>();
 
@@ -51,7 +48,50 @@ namespace MapManager
         {
             if (IsEditingImage)
             {
-                debugStatus.Text = $"Is in Edit Mode: {e.Delta}";
+                if (originalOverlayImage == null)
+                {
+                    originalOverlayImage = new Bitmap(overlayImage);
+                }
+
+                debugStatus.Text = $"Is in Edit Mode: {e.Delta} and Overlay Scale is {overlayScale}";
+
+                if (e.Delta > 1)
+                {
+                    // If Positive, Grow the Image
+                    overlayScale++;
+                }
+                else
+                {
+                    // Negative, Shrink the Image
+                    overlayScale--;
+                }
+
+                double scale = overlayScale * .1;
+                Size scaledSize = new Size((int)(originalOverlayImage.Width * scale), (int)(originalOverlayImage.Height * scale));
+
+                scaledImageLabel.Text = scaledSize.ToString();
+
+
+                Bitmap resized = new Bitmap(originalOverlayImage, scaledSize);
+
+                overlayImage.Dispose();
+                overlayImage = null;
+                overlayImage = resized;
+
+                //var brush = new SolidBrush(Color.White);
+
+                //var scaleWidth = (int)(overlayImage.Width * scale);
+                //var scaleHeight = (int)(overlayImage.Height * scale);
+                //var scaledBitmap = new Bitmap(scaleWidth, scaleHeight);
+
+                //Graphics graph = Graphics.FromImage(scaledBitmap);
+                //graph.InterpolationMode = InterpolationMode.High;
+                //graph.CompositingQuality = CompositingQuality.HighQuality;
+                //graph.SmoothingMode = SmoothingMode.AntiAlias;
+                //graph.FillRectangle(brush, new RectangleF(0, 0, mapPictureBox.Image.Width, mapPictureBox.Image.Width));
+                //graph.DrawImage(overlayImage, new Rectangle(0, 0, scaleWidth, scaleHeight));
+
+
             }
             else
             {
@@ -134,7 +174,9 @@ namespace MapManager
 
             renderedMap = RenderLayers();
             mapPictureBox.Image = renderedMap;
-
+            overlayScale = 0;
+            originalOverlayImage.Dispose();
+            originalOverlayImage = null;
             IsEditingImage = false;
         }
 

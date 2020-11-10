@@ -34,13 +34,14 @@
             this.assetPictureBox = new System.Windows.Forms.PictureBox();
             this.assetsLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.debugStatus = new System.Windows.Forms.Label();
             this.mousePosScaled = new System.Windows.Forms.Label();
             this.mousePosActual = new System.Windows.Forms.Label();
             this.primaryVerticalLayout = new System.Windows.Forms.TableLayoutPanel();
             this.layersTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.layerPreviewPictureBox = new System.Windows.Forms.PictureBox();
             this.layerSelectionComboBox = new System.Windows.Forms.ComboBox();
-            this.debugStatus = new System.Windows.Forms.Label();
+            this.scaledImageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).BeginInit();
             this.assetsLayoutPanel.SuspendLayout();
@@ -106,6 +107,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.scaledImageLabel);
             this.panel1.Controls.Add(this.debugStatus);
             this.panel1.Controls.Add(this.mousePosScaled);
             this.panel1.Controls.Add(this.mousePosActual);
@@ -114,6 +116,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(220, 143);
             this.panel1.TabIndex = 3;
+            // 
+            // debugStatus
+            // 
+            this.debugStatus.AutoSize = true;
+            this.debugStatus.Location = new System.Drawing.Point(4, 50);
+            this.debugStatus.Name = "debugStatus";
+            this.debugStatus.Size = new System.Drawing.Size(101, 13);
+            this.debugStatus.TabIndex = 2;
+            this.debugStatus.Text = "Debug Status Label";
             // 
             // mousePosScaled
             // 
@@ -187,14 +198,14 @@
             this.layerSelectionComboBox.TabIndex = 1;
             this.layerSelectionComboBox.SelectedValueChanged += new System.EventHandler(this.layerSelectionComboBox_SelectedValueChanged);
             // 
-            // debugStatus
+            // scaledImageLabel
             // 
-            this.debugStatus.AutoSize = true;
-            this.debugStatus.Location = new System.Drawing.Point(4, 50);
-            this.debugStatus.Name = "debugStatus";
-            this.debugStatus.Size = new System.Drawing.Size(101, 13);
-            this.debugStatus.TabIndex = 2;
-            this.debugStatus.Text = "Debug Status Label";
+            this.scaledImageLabel.AutoSize = true;
+            this.scaledImageLabel.Location = new System.Drawing.Point(4, 67);
+            this.scaledImageLabel.Name = "scaledImageLabel";
+            this.scaledImageLabel.Size = new System.Drawing.Size(95, 13);
+            this.scaledImageLabel.TabIndex = 3;
+            this.scaledImageLabel.Text = "Scaled Image Size";
             // 
             // Form1
             // 
@@ -235,6 +246,7 @@
         private System.Windows.Forms.PictureBox layerPreviewPictureBox;
         private System.Windows.Forms.ComboBox layerSelectionComboBox;
         private System.Windows.Forms.Label debugStatus;
+        private System.Windows.Forms.Label scaledImageLabel;
     }
 }
 
