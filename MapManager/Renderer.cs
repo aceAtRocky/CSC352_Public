@@ -20,5 +20,12 @@
 
             return render;
         }
+
+        public static Size Scale(Size original, double growPercent)
+        {
+            int newWidth = (int)(original.Width * growPercent);
+            int newHeight = (int)(original.Height * growPercent);
+            return new Size(newWidth, newHeight);
+        }
     }
 }

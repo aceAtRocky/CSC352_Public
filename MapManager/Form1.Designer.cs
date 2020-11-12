@@ -34,6 +34,7 @@
             this.assetPictureBox = new System.Windows.Forms.PictureBox();
             this.assetsLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.scaledImageLabel = new System.Windows.Forms.Label();
             this.debugStatus = new System.Windows.Forms.Label();
             this.mousePosScaled = new System.Windows.Forms.Label();
             this.mousePosActual = new System.Windows.Forms.Label();
@@ -41,7 +42,8 @@
             this.layersTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.layerPreviewPictureBox = new System.Windows.Forms.PictureBox();
             this.layerSelectionComboBox = new System.Windows.Forms.ComboBox();
-            this.scaledImageLabel = new System.Windows.Forms.Label();
+            this.layerSelectionButtonsPanel = new System.Windows.Forms.Panel();
+            this.editLayerButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).BeginInit();
             this.assetsLayoutPanel.SuspendLayout();
@@ -49,6 +51,7 @@
             this.primaryVerticalLayout.SuspendLayout();
             this.layersTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layerPreviewPictureBox)).BeginInit();
+            this.layerSelectionButtonsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapPictureBox
@@ -117,6 +120,15 @@
             this.panel1.Size = new System.Drawing.Size(220, 143);
             this.panel1.TabIndex = 3;
             // 
+            // scaledImageLabel
+            // 
+            this.scaledImageLabel.AutoSize = true;
+            this.scaledImageLabel.Location = new System.Drawing.Point(4, 67);
+            this.scaledImageLabel.Name = "scaledImageLabel";
+            this.scaledImageLabel.Size = new System.Drawing.Size(95, 13);
+            this.scaledImageLabel.TabIndex = 3;
+            this.scaledImageLabel.Text = "Scaled Image Size";
+            // 
             // debugStatus
             // 
             this.debugStatus.AutoSize = true;
@@ -160,6 +172,7 @@
             this.primaryVerticalLayout.Name = "primaryVerticalLayout";
             this.primaryVerticalLayout.RowCount = 1;
             this.primaryVerticalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.primaryVerticalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.primaryVerticalLayout.Size = new System.Drawing.Size(1275, 687);
             this.primaryVerticalLayout.TabIndex = 5;
             // 
@@ -169,7 +182,7 @@
             this.layersTableLayoutPanel.ColumnCount = 1;
             this.layersTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.layersTableLayoutPanel.Controls.Add(this.layerPreviewPictureBox, 0, 0);
-            this.layersTableLayoutPanel.Controls.Add(this.layerSelectionComboBox, 0, 1);
+            this.layersTableLayoutPanel.Controls.Add(this.layerSelectionButtonsPanel, 0, 1);
             this.layersTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layersTableLayoutPanel.Location = new System.Drawing.Point(1072, 3);
             this.layersTableLayoutPanel.Name = "layersTableLayoutPanel";
@@ -184,28 +197,37 @@
             this.layerPreviewPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layerPreviewPictureBox.Location = new System.Drawing.Point(3, 3);
             this.layerPreviewPictureBox.Name = "layerPreviewPictureBox";
-            this.layerPreviewPictureBox.Size = new System.Drawing.Size(197, 648);
-            this.layerPreviewPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.layerPreviewPictureBox.Size = new System.Drawing.Size(200, 569);
+            this.layerPreviewPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.layerPreviewPictureBox.TabIndex = 0;
             this.layerPreviewPictureBox.TabStop = false;
             // 
             // layerSelectionComboBox
             // 
             this.layerSelectionComboBox.FormattingEnabled = true;
-            this.layerSelectionComboBox.Location = new System.Drawing.Point(3, 657);
+            this.layerSelectionComboBox.Location = new System.Drawing.Point(3, 3);
             this.layerSelectionComboBox.Name = "layerSelectionComboBox";
             this.layerSelectionComboBox.Size = new System.Drawing.Size(197, 21);
             this.layerSelectionComboBox.TabIndex = 1;
             this.layerSelectionComboBox.SelectedValueChanged += new System.EventHandler(this.layerSelectionComboBox_SelectedValueChanged);
             // 
-            // scaledImageLabel
+            // layerSelectionButtonsPanel
             // 
-            this.scaledImageLabel.AutoSize = true;
-            this.scaledImageLabel.Location = new System.Drawing.Point(4, 67);
-            this.scaledImageLabel.Name = "scaledImageLabel";
-            this.scaledImageLabel.Size = new System.Drawing.Size(95, 13);
-            this.scaledImageLabel.TabIndex = 3;
-            this.scaledImageLabel.Text = "Scaled Image Size";
+            this.layerSelectionButtonsPanel.Controls.Add(this.editLayerButton);
+            this.layerSelectionButtonsPanel.Controls.Add(this.layerSelectionComboBox);
+            this.layerSelectionButtonsPanel.Location = new System.Drawing.Point(3, 578);
+            this.layerSelectionButtonsPanel.Name = "layerSelectionButtonsPanel";
+            this.layerSelectionButtonsPanel.Size = new System.Drawing.Size(200, 100);
+            this.layerSelectionButtonsPanel.TabIndex = 2;
+            // 
+            // editLayerButton
+            // 
+            this.editLayerButton.Location = new System.Drawing.Point(75, 30);
+            this.editLayerButton.Name = "editLayerButton";
+            this.editLayerButton.Size = new System.Drawing.Size(75, 23);
+            this.editLayerButton.TabIndex = 2;
+            this.editLayerButton.Text = "Edit";
+            this.editLayerButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -227,6 +249,7 @@
             this.primaryVerticalLayout.PerformLayout();
             this.layersTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layerPreviewPictureBox)).EndInit();
+            this.layerSelectionButtonsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,6 +270,8 @@
         private System.Windows.Forms.ComboBox layerSelectionComboBox;
         private System.Windows.Forms.Label debugStatus;
         private System.Windows.Forms.Label scaledImageLabel;
+        private System.Windows.Forms.Panel layerSelectionButtonsPanel;
+        private System.Windows.Forms.Button editLayerButton;
     }
 }
 

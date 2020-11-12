@@ -14,7 +14,7 @@
         Point overlayLocation = new Point();
         bool IsEditingImage = false;
 
-        int overlayScale = 0;
+        int overlayScale = 100;
         Bitmap originalOverlayImage = null;
 
         BindingList<Layer> layers = new BindingList<Layer>();
@@ -55,43 +55,38 @@
 
                 debugStatus.Text = $"Is in Edit Mode: {e.Delta} and Overlay Scale is {overlayScale}";
 
+                int increaseScaleBy = 1;
+
+                if (Control.ModifierKeys == Keys.Shift)
+                {
+                    increaseScaleBy = 10;
+                }
+
                 if (e.Delta > 1)
                 {
                     // If Positive, Grow the Image
-                    overlayScale++;
+                    overlayScale = overlayScale + increaseScaleBy;
                 }
                 else
                 {
                     // Negative, Shrink the Image
-                    overlayScale--;
+                    if (overlayScale - increaseScaleBy > 1)
+                    {
+                        overlayScale = overlayScale - increaseScaleBy;
+                    }
                 }
 
-                double scale = overlayScale * .1;
-                Size scaledSize = new Size((int)(originalOverlayImage.Width * scale), (int)(originalOverlayImage.Height * scale));
+                double scale = overlayScale * .01;
+                Size scaledSize = Renderer.Scale(originalOverlayImage.Size, scale);
 
                 scaledImageLabel.Text = scaledSize.ToString();
 
 
-                Bitmap resized = new Bitmap(originalOverlayImage, scaledSize);
+                Bitmap scaledBitmap = new Bitmap(originalOverlayImage, scaledSize);
 
                 overlayImage.Dispose();
                 overlayImage = null;
-                overlayImage = resized;
-
-                //var brush = new SolidBrush(Color.White);
-
-                //var scaleWidth = (int)(overlayImage.Width * scale);
-                //var scaleHeight = (int)(overlayImage.Height * scale);
-                //var scaledBitmap = new Bitmap(scaleWidth, scaleHeight);
-
-                //Graphics graph = Graphics.FromImage(scaledBitmap);
-                //graph.InterpolationMode = InterpolationMode.High;
-                //graph.CompositingQuality = CompositingQuality.HighQuality;
-                //graph.SmoothingMode = SmoothingMode.AntiAlias;
-                //graph.FillRectangle(brush, new RectangleF(0, 0, mapPictureBox.Image.Width, mapPictureBox.Image.Width));
-                //graph.DrawImage(overlayImage, new Rectangle(0, 0, scaleWidth, scaleHeight));
-
-
+                overlayImage = scaledBitmap;
             }
             else
             {
@@ -174,9 +169,11 @@
 
             renderedMap = RenderLayers();
             mapPictureBox.Image = renderedMap;
-            overlayScale = 0;
-            originalOverlayImage.Dispose();
+            overlayScale = 100;
+
+            originalOverlayImage?.Dispose();
             originalOverlayImage = null;
+
             IsEditingImage = false;
         }
 

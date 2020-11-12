@@ -38,6 +38,24 @@
 
             paper.Save(savePath);
         }
+
+        [TestCaseSource(typeof(Scale_ValidArguments_Tests))]
+        public void Scale_ValidArguments(Size original, double scalePercent, Size expected)
+        {
+            Size actual = Renderer.Scale(original, scalePercent);
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+    }
+
+    internal class Scale_ValidArguments_Tests : IEnumerable
+    {
+        public IEnumerator GetEnumerator()
+        {
+            yield return new TestCaseData(new Size(100, 100), 1, new Size(100, 100));
+            yield return new TestCaseData(new Size(100, 100), .5, new Size(50, 50));
+            yield return new TestCaseData(new Size(100, 100), .01, new Size(1, 1));
+            yield return new TestCaseData(new Size(96, 50), .32, new Size(30, 16));
+        }
     }
 
     internal class RenderLayer_ValidArguments_Tests : IEnumerable

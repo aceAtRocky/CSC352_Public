@@ -25,5 +25,7 @@
         public Point Location { get; set; }
 
         public string Name { get; set; }
+
+        public Size RenderSize { get; set; }
     }
 }
