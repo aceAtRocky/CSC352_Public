@@ -13,6 +13,8 @@
         Bitmap combinedImage = null;
         Point overlayLocation = new Point();
         bool IsEditingImage = false;
+        bool IsModifyingLayer = false;
+        int editingLayerIndex = -1;
 
         int overlayScale = 100;
         Bitmap originalOverlayImage = null;
@@ -142,7 +144,20 @@
             overlayLocation = new Point(
                 (int)(e.X * scalex) - overlayImage.Width / 2,
                 (int)(e.Y * scaley) - overlayImage.Height / 2);
-            ShowCombinedImage();
+
+            if (IsModifyingLayer)
+            {
+                layers[editingLayerIndex].Location = overlayLocation;
+                layers[editingLayerIndex].ShouldRender = true;
+                Image previousImage = mapPictureBox.Image;
+                mapPictureBox.Image = RenderLayers();
+                previousImage.Dispose();
+                layers[editingLayerIndex].ShouldRender = false;
+            }
+            else
+            {
+                ShowCombinedImage();
+            }
 
             mousePosActual.Text = $"MousePosActual - X: {e.X}, Y: {e.Y}";
             mousePosScaled.Text = $"MousePosScaled - X: {overlayLocation.X}, Y: {overlayLocation.Y}";
@@ -161,7 +176,16 @@
                 return;
             }
 
-            layers.Add(new Layer() { Current = new Bitmap(overlayImage), FileName = string.Empty, Location = overlayLocation });
+            if (IsModifyingLayer)
+            {
+                layers[editingLayerIndex].ShouldRender = true;
+                editingLayerIndex = -1;
+                IsModifyingLayer = false;
+            }
+            else
+            {
+                layers.Add(new Layer() { Current = new Bitmap(overlayImage), FileName = string.Empty, Location = overlayLocation });
+            }
 
             mapPictureBox.Cursor = Cursors.Default;
             overlayImage.Dispose();
@@ -191,6 +215,17 @@
             {
                 // Do Nothing
             }
+        }
+
+        private void editLayerButton_Click(object sender, EventArgs e)
+        {
+            overlayImage = new Bitmap(layerSelectionComboBox.SelectedValue as Bitmap);
+            editingLayerIndex = layerSelectionComboBox.SelectedIndex;
+            layers[editingLayerIndex].ShouldRender = false;
+            renderedMap = RenderLayers();
+            mapPictureBox.Cursor = Cursors.Cross;
+            IsEditingImage = true;
+            IsModifyingLayer = true;
         }
     }
 }

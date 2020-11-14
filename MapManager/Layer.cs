@@ -8,6 +8,7 @@
         public Layer()
         {
             Name = Guid.NewGuid().ToString("D");
+            ShouldRender = true;
         }
 
         public Layer(string filePath)
@@ -16,6 +17,7 @@
             FileName = filePath;
             Location = new Point(0, 0);
             Name = Guid.NewGuid().ToString("D");
+            ShouldRender = true;
         }
 
         public Bitmap Current { get; set; }
@@ -27,5 +29,7 @@
         public string Name { get; set; }
 
         public Size RenderSize { get; set; }
+
+        public bool ShouldRender { get; set; }
     }
 }

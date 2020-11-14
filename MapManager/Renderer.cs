@@ -12,9 +12,12 @@
 
             foreach (Layer layer in layers)
             {
-                using (Graphics combiner = Graphics.FromImage(render))
+                if (layer.ShouldRender)
                 {
-                    combiner.DrawImage(layer.Current, layer.Location);
+                    using (Graphics combiner = Graphics.FromImage(render))
+                    {
+                        combiner.DrawImage(layer.Current, layer.Location);
+                    }
                 }
             }
 
