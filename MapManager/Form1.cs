@@ -28,7 +28,7 @@
         public Form1()
         {
             InitializeComponent();
-            layers.Add(new Layer() { FileName = "", Current = new Bitmap(mapPictureBox.Image), Location = new Point(0, 0) });
+            layers.Add(new Layer() { Name = "Base", FileName = null, Current = new Bitmap(mapPictureBox.Image), Location = new Point(0, 0) });
 
             renderedMap = RenderLayers();
             mapPictureBox.Image = renderedMap;
@@ -148,6 +148,8 @@
             if (IsModifyingLayer)
             {
                 layers[editingLayerIndex].Location = overlayLocation;
+                layers[editingLayerIndex].Current.Dispose();
+                layers[editingLayerIndex].Current = new Bitmap(overlayImage);
                 layers[editingLayerIndex].ShouldRender = true;
                 Image previousImage = mapPictureBox.Image;
                 mapPictureBox.Image = RenderLayers();
