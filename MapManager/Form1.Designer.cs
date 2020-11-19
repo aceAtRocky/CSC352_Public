@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mapPictureBox = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.assetsComboBox = new System.Windows.Forms.ComboBox();
             this.assetPictureBox = new System.Windows.Forms.PictureBox();
             this.assetsLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -68,19 +68,19 @@
             this.mapPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mapPictureBox_MouseMove);
             this.mapPictureBox.Resize += new System.EventHandler(this.mapPictureBox_Resize);
             // 
-            // comboBox1
+            // assetsComboBox
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 508);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(220, 21);
-            this.comboBox1.TabIndex = 1;
+            this.assetsComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.assetsComboBox.FormattingEnabled = true;
+            this.assetsComboBox.Location = new System.Drawing.Point(3, 508);
+            this.assetsComboBox.Name = "assetsComboBox";
+            this.assetsComboBox.Size = new System.Drawing.Size(220, 21);
+            this.assetsComboBox.TabIndex = 1;
+            this.assetsComboBox.SelectedIndexChanged += new System.EventHandler(this.assetsComboBox_SelectedIndexChanged);
             // 
             // assetPictureBox
             // 
             this.assetPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.assetPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("assetPictureBox.Image")));
             this.assetPictureBox.Location = new System.Drawing.Point(3, 3);
             this.assetPictureBox.Name = "assetPictureBox";
             this.assetPictureBox.Size = new System.Drawing.Size(220, 499);
@@ -95,7 +95,7 @@
             this.assetsLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.assetsLayoutPanel.ColumnCount = 1;
             this.assetsLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.assetsLayoutPanel.Controls.Add(this.comboBox1, 0, 1);
+            this.assetsLayoutPanel.Controls.Add(this.assetsComboBox, 0, 1);
             this.assetsLayoutPanel.Controls.Add(this.assetPictureBox, 0, 0);
             this.assetsLayoutPanel.Controls.Add(this.panel1, 0, 2);
             this.assetsLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -259,7 +259,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox mapPictureBox;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox assetsComboBox;
         private System.Windows.Forms.PictureBox assetPictureBox;
         private System.Windows.Forms.TableLayoutPanel assetsLayoutPanel;
         private System.Windows.Forms.TableLayoutPanel primaryVerticalLayout;

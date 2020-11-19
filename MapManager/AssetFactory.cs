@@ -21,7 +21,8 @@ namespace MapManager
 
             foreach (var assetPath in allAssetPaths)
             {
-                assets.Add(new Asset(assetPath));
+                string name = assetPath.Replace(assetDirectory, string.Empty).Replace(".png", string.Empty);
+                assets.Add(new Asset(assetPath) { Name = name });
             }
 
             return assets;

@@ -42,6 +42,13 @@
             layerSelectionComboBox.DisplayMember = "Name";
             layerSelectionComboBox.ValueMember = "Current";
 
+            // Bind the ComboBox to our Assets BindingSource
+            BindingSource assetsBindingSource = new BindingSource();
+            assetsBindingSource.DataSource = AssetFactory.Construct(@"C:\Users\ace.olszowka\Documents\GitHub\CSC352_Public\MapManager\Assets");
+            assetsComboBox.DataSource = assetsBindingSource.DataSource;
+            assetsComboBox.DisplayMember = "Name";
+            assetsComboBox.ValueMember = "FilePath";
+
             // Bind the Mouse Wheel Events
             MouseWheel += Form1_MouseWheel;
         }
@@ -228,6 +235,30 @@
             mapPictureBox.Cursor = Cursors.Cross;
             IsEditingImage = true;
             IsModifyingLayer = true;
+        }
+
+        private void assetsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // We know where the asset file is
+            string assetFilePath;
+
+            if (assetsComboBox.SelectedValue is string)
+            {
+                assetFilePath = assetsComboBox.SelectedValue as string;
+            }
+            else if (assetsComboBox.SelectedValue is Asset)
+            {
+                assetFilePath = (assetsComboBox.SelectedValue as Asset).FilePath;
+            }
+            else
+            {
+                throw new InvalidOperationException();
+            }
+
+            // Load up the asset file as a bitmap
+            Bitmap assetPicture = new Bitmap(assetFilePath);
+
+            assetPictureBox.Image = assetPicture;
         }
     }
 }
