@@ -44,6 +44,11 @@
             this.layerSelectionButtonsPanel = new System.Windows.Forms.Panel();
             this.editLayerButton = new System.Windows.Forms.Button();
             this.layerSelectionComboBox = new System.Windows.Forms.ComboBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.mapPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.assetPictureBox)).BeginInit();
             this.assetsLayoutPanel.SuspendLayout();
@@ -52,6 +57,7 @@
             this.layersTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layerPreviewPictureBox)).BeginInit();
             this.layerSelectionButtonsPanel.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapPictureBox
@@ -168,12 +174,12 @@
             this.primaryVerticalLayout.Controls.Add(this.mapPictureBox, 1, 0);
             this.primaryVerticalLayout.Controls.Add(this.layersTableLayoutPanel, 2, 0);
             this.primaryVerticalLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.primaryVerticalLayout.Location = new System.Drawing.Point(0, 0);
+            this.primaryVerticalLayout.Location = new System.Drawing.Point(0, 24);
             this.primaryVerticalLayout.Name = "primaryVerticalLayout";
             this.primaryVerticalLayout.RowCount = 1;
             this.primaryVerticalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.primaryVerticalLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 687F));
-            this.primaryVerticalLayout.Size = new System.Drawing.Size(1275, 687);
+            this.primaryVerticalLayout.Size = new System.Drawing.Size(1275, 663);
             this.primaryVerticalLayout.TabIndex = 5;
             // 
             // layersTableLayoutPanel
@@ -230,6 +236,45 @@
             this.layerSelectionComboBox.TabIndex = 1;
             this.layerSelectionComboBox.SelectedValueChanged += new System.EventHandler(this.layerSelectionComboBox_SelectedValueChanged);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1275, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.saveToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,7 +282,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1275, 687);
             this.Controls.Add(this.primaryVerticalLayout);
+            this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Form1";
@@ -251,6 +298,8 @@
             this.layersTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layerPreviewPictureBox)).EndInit();
             this.layerSelectionButtonsPanel.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,6 +322,11 @@
         private System.Windows.Forms.Label scaledImageLabel;
         private System.Windows.Forms.Panel layerSelectionButtonsPanel;
         private System.Windows.Forms.Button editLayerButton;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 
