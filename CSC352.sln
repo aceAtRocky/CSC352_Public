@@ -46,6 +46,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapManager", "MapManager\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapManager.UnitTests", "MapManager.UnitTests\MapManager.UnitTests.csproj", "{4296586A-18B2-4CE6-A40F-B743251270A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLINQExample", "PLINQExample\PLINQExample.csproj", "{0E9CFDC8-AC48-41F1-80DF-60138824A686}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectPangram", "DetectPangram\DetectPangram.csproj", "{7AE2BB94-B183-4093-9F94-7B5044056082}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,6 +132,14 @@ Global
 		{4296586A-18B2-4CE6-A40F-B743251270A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4296586A-18B2-4CE6-A40F-B743251270A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4296586A-18B2-4CE6-A40F-B743251270A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E9CFDC8-AC48-41F1-80DF-60138824A686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E9CFDC8-AC48-41F1-80DF-60138824A686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E9CFDC8-AC48-41F1-80DF-60138824A686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E9CFDC8-AC48-41F1-80DF-60138824A686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AE2BB94-B183-4093-9F94-7B5044056082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AE2BB94-B183-4093-9F94-7B5044056082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AE2BB94-B183-4093-9F94-7B5044056082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AE2BB94-B183-4093-9F94-7B5044056082}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
